@@ -11,6 +11,11 @@ public class LoginPage {
     protected WebDriver driver;
     protected WebDriverWait webDriverWait;
 
+    /**
+     * These are representations of elements on a page.
+     * This one is for the accept button for example.
+     * <button type="button" class="primary" name="accept" value="Accept" onclick="onAccept()">Accept</button>
+     */
     private By acceptBy = By.name("accept");
     private By userNameBy = By.name("username");
     private By passwordBy = By.name("secretkey");
@@ -21,6 +26,12 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    /**
+     * Accepts the disclaimer, enters username and password then logs in as read only.
+     * @param userName login username
+     * @param password login password
+     * @return DashboardPage
+     */
     public DashboardPage login(String userName, String password) {
         driver.findElement(acceptBy).click();
         driver.findElement(userNameBy).sendKeys(userName);

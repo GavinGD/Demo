@@ -11,7 +11,10 @@ public class DashboardPage {
     protected WebDriver driver;
     protected WebDriverWait webDriverWait;
 
-    // Gets the 2nd span with the class 'ng-star-inserted'
+    /**
+     * Gets the 2nd span with the class 'ng-star-inserted', since there
+     * are 2 spans with this same class.
+     */
     private By usernameBy = By.xpath("(//span[@class='ng-star-inserted'])[2]");
 
     public DashboardPage(WebDriver driver) {
@@ -22,6 +25,10 @@ public class DashboardPage {
         }
     }
 
+    /**
+     * Gets the logged in users profile name.
+     * @return string
+     */
     public String getProfileName() {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(usernameBy));
