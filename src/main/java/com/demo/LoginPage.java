@@ -21,16 +21,17 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public void login(String userName, String password) {
+    public DashboardPage login(String userName, String password) {
         driver.findElement(acceptBy).click();
         driver.findElement(userNameBy).sendKeys(userName);
         driver.findElement(passwordBy).sendKeys(password);
         driver.findElement(loginBy).click();
 
         // Set wait duration and wait until Login Read-Only button is visible
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(readOnlyBy));
         driver.findElement(readOnlyBy).click();
+        return new DashboardPage(driver);
     }
 
 }

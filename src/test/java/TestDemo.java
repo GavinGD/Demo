@@ -1,3 +1,4 @@
+import com.demo.DashboardPage;
 import com.demo.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,9 +17,9 @@ public class TestDemo {
     }
 
     @Test
-    public void acceptDisclaimer() {
+    public void loginTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("demo", "demo");
-        Assert.assertEquals(driver.getTitle(), "FortiGate - NGFW_PRI");
+        DashboardPage dashboardPage = loginPage.login("demo", "demo");
+        Assert.assertEquals(dashboardPage.getProfileName(), "demo");
     }
 }
